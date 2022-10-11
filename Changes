@@ -1,0 +1,191 @@
+0.51  2020-11-30
+
+- Fix problem with Cwd::realpath()
+
+  Some versions of Cwd::realpath() must be called on an *existing* path,
+  otherwise they will return undef.
+
+0.50  2020-11-17
+
+- Fix RT#132067: fix for Archive::Zip related test failures due to symlinks
+  Thanks, Shawn Laffan!
+
+- create repo on GitHub, update metadata
+
+0.49  2012-10-15
+
+- Fix RT #78194: PAR::Dist::parse_dist_name mis-parses par file name
+
+0.48  2011-11-05
+
+- Prefer MYMETA.yml over META.yml if possible.
+- Try YAML implementations in different order (XS first).
+
+0.47  2009-11-29
+
+- POD fixes (Frank Wiegand)
+
+0.46  2009-07-31
+
+- Do not use Archive::Zip if its version is 1.28.
+
+0.45  2009-02-20
+
+- Fix test skipping if certain optional dependencies couldn't be found.
+
+0.44  2009-02-02
+
+- Abandon support for perl 5.005.
+- Merging of the various requires-like META.yml sections in merge_par.
+
+0.43  2009-01-23
+
+- Don't rely on the return value of ExtUtils::Install::(un)?install
+
+0.42  2009-01-03
+
+- Apply *correct* patch for blib_to_par across file system boundaries
+
+0.41  2008-12-17
+
+- Apply patch for blib_to_par across file system boundaries from Radek.
+
+0.40  2008-10-27
+
+- Rewrite parts of the install_par docs.
+- Add the esoteric auto_inst_lib_conversion parameter to install_par.
+
+0.39  2008-10-21
+
+- Add the "verbose" option to install_par and uninstall_par.
+- Add the "uninstall_shadows" option to install_par.
+
+0.38  2008-10-16
+
+- Fix _check_tools() to use *Foo{THING} syntax instead of \&{}.
+
+0.37  2008-10-08
+
+- Fix the "Skip 03merge_meta tests if no A::Zip nor zip/unzip found." logic.
+- Add more debug output to debug mode (system calls).
+- Add internal _check_tools() sub which checks the availability of various
+  required tools (yaml, zip).
+
+0.36  2008-09-30
+
+- Skip 03merge_meta tests if no YAML *DUMPER* could be found.
+- Better debug output for the YAML-search.
+
+0.35  2008-09-30
+
+- Skip 03merge_meta tests if no A::Zip nor zip/unzip found.
+- Better error messages from _zip/_unzip
+
+0.34  2008-09-24
+
+- Do not fail if _zip() doesn't return true, doh!
+
+0.33  2008-09-17
+
+- Better diagnostics for the CPAN testers test failures.
+- Extra -f check in _merge_meta.
+
+0.32  2008-09-12
+
+- Version bump, fix tests.
+
+0.31  2008-05-28
+
+- Fix small bug in _unzip that could cause double extraction.
+
+0.29  2008-02-06
+
+- Make file://foo.par URLs installable.
+
+0.28  2008-02-05
+
+- Setting installation targets to undef with install_par
+  should remove them altogether now. This way, you can
+  make sure, some parts aren't installed. (Such as manpages
+  on win32)
+
+0.27  2008-02-04
+
+- No more signature. I keep breaking things with it.
+
+0.26  2008-02-03
+
+- If the return code from LWP::Simple is 304/not modified,
+  then that's a success. So we shouldn't throw an error.
+
+0.25  2007-06-29
+
+- Use Archive::Unzip::Burst for unzipping if available.
+
+0.24  2007-07-20
+
+- Remove shebang from Makefile.PL. No assumptions about the user's perl.
+- Port Makefile.PL to use ExtUtils::MakeMaker
+
+0.23  2007-06-20
+
+- Add contains_binaries.
+
+0.21  2006-10-12
+
+- _install_or_uninstall tries to remove the temporary directory
+  while cwd() is in that directory. That fails on win32 leaving
+  temporary directories on disk. This is now fixed.
+
+0.20  2006-10-11
+
+- Added a more flexible way of using PAR::Dist::install_par's
+  custom target logic.
+
+0.19  2006-09-03
+
+- It's not possible to specify your own installation paths.
+- Installation paths now documented.
+
+0.15  2006-07-28
+
+- PAR::Dist would previously generate bad file names and META.yml if
+  the newlines contained Windows' \r. That's history.
+
+0.14  2006-07-19
+
+- The "version" field of META.yml files written by Module::Build
+  was not parsed correctly by the ad-hoc YAML parser.
+
+0.13  2006-07-22
+
+- Module::Install didn't regenerate META.yml because author bit
+  wasn't set.
+
+0.12  2006-07-21
+
+- Found a couple of path-related bugs in the new functions of 0.11.
+
+0.11  2006-07-21
+
+- Fixed potential bugs where slashes were used as path separators.
+- Added merge_par() which merges two or more .par archives.
+- Added remove_man() which removes all man pages and html docs from
+  a .par archive.
+
+0.10  2006-07-05
+
+- .par distributions fetched from URLs will now be installed as
+  distributions named "Module-Name" instead of
+  "http://foo.bar/path/Module-Name-0.01-architecture-version.par".
+- Updated Module::Install to 0.63
+
+0.09  2006-05-20
+
+- Updated Module::Install to 0.62
+
+0.08  2006-02-13
+
+- Updated Module::Install
+- Slight documentation fixes.
+

@@ -1,0 +1,31 @@
+Source: libpar-dist-perl
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: gregor herrmann <gregoa@debian.org>,
+           Florian Schlichting <fschlich@zedat.fu-berlin.de>
+Section: perl
+Testsuite: autopkgtest-pkg-perl
+Priority: optional
+Build-Depends: debhelper-compat (= 13)
+Build-Depends-Indep: libarchive-zip-perl <!nocheck>,
+                     libtest-pod-coverage-perl <!nocheck>,
+                     libtest-pod-perl <!nocheck>,
+                     libyaml-libyaml-perl <!nocheck> | libyaml-perl <!nocheck> | libyaml-tiny-perl <!nocheck> | libyaml-syck-perl <!nocheck>,
+                     perl
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/libpar-dist-perl
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/libpar-dist-perl.git
+Homepage: https://metacpan.org/release/PAR-Dist
+Rules-Requires-Root: no
+
+Package: libpar-dist-perl
+Architecture: all
+Depends: ${misc:Depends},
+         ${perl:Depends}
+Recommends: libarchive-zip-perl,
+            libyaml-libyaml-perl | libyaml-perl | libyaml-tiny-perl | libyaml-syck-perl
+Description: perl module to create and manipulate PAR distributions
+ The PAR::Dist module creates and manipulates PAR distributions. These are
+ architecture-specific .par files, containing everything under blib/ of a CPAN
+ distribution after the make or Build stage, a META.yml describing metadata
+ of the original CPAN distribution, and a MANIFEST detailing all files within
+ it. Digitally signed PAR distributions will also contain a SIGNATURE file.
